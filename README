@@ -1,6 +1,4 @@
-Install rope and exuberant-ctags:
+Some configuration stuff for my local environment.  Based off devcamcar's dotfiles repo with a couple tweaks here and there.
 
-OSX:
 
-pip install rope ropemode
-brew install ctags-exuberant
+

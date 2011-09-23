@@ -43,6 +43,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+#Git related functions
 function git_branch {
   git branch --no-color 2> /dev/null | egrep '^\*' | sed -e 's/^* //'
 }
@@ -94,11 +95,17 @@ export LSCOLORS=ExGxcxdxCxegedabagacad
 export EDITOR=/usr/bin/vim
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/sw/bin:~/.ec2/bin:~/bin
 export MANPATH=$MANPATH:/opt/local/share/man
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 export PIP_RESPECT_VIRTUALENV=true
 export ARCHFLAGS="-arch i386 -arch x86_64"
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+if [ `uname -s` == "Darwin" ]; then
+    export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+    alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+elif [ `uname -s` == "Linux" ]; then
+    eval `ssh-agent`
+    ssh-add # Startup ssh-agent
+fi
 
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

@@ -206,7 +206,7 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore          = ['\.pyc$','\.swp$']
-let NERDTreeWinPos          = 'right'
+let NERDTreeWinPos          = 'left'
 let NERDTreeSplitVertical   = 1
 let NERDTreeChDirMode       = 2
 let NERDTreeShowBookmarks   = 1
