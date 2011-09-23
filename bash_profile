@@ -65,7 +65,7 @@ function dirty_git_prompt {
     git_dirty && echo " (${branch})"
 }
 
-function clean_git_prompt {    branch=`git_branch`
+function clean_git_prompt {
     if [ -z "${branch}" ] ; then
         return
     fi
