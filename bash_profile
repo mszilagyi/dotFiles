@@ -66,6 +66,7 @@ function dirty_git_prompt {
 }
 
 function clean_git_prompt {
+    branch=`git_branch`
     if [ -z "${branch}" ] ; then
         return
     fi
@@ -102,7 +103,7 @@ if [ `uname -s` == "Darwin" ]; then
     export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-elif [ `uname -s` == "Linux" ]; then
+else [ `uname -s` == "Linux" ]
     eval `ssh-agent`
     ssh-add # Startup ssh-agent
 fi
