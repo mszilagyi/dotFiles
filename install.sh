@@ -30,4 +30,7 @@ ln -s `pwd`/vim/gvimrc $HOME/.gvimrc
 ln -s `pwd`/screenrc $HOME/.screenrc
 ln -s `pwd`/bash_profile $HOME/.bash_profile
 
-
+# Set up git aliases.
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
