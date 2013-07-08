@@ -93,13 +93,14 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExGxcxdxCxegedabagacad
 export EDITOR=/usr/bin/vim
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/sw/bin:~/.ec2/bin:~/bin
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/sw/bin:~/.ec2/bin:~/bin
 export MANPATH=$MANPATH:/opt/local/share/man
 export PIP_RESPECT_VIRTUALENV=true
 export ARCHFLAGS="-arch i386 -arch x86_64"
 
 if [ `uname -s` == "Darwin" ]; then
     export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+    source /usr/local/git/contrib/completion/git-completion.bash
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 else [ `uname -s` == "Linux" ]
