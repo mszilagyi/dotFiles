@@ -62,3 +62,6 @@
     path = vim/vim/bundle/minibufexpl
     url = https://github.com/sontek/minibufexpl.vim.git
     ignore = dirty
+[submodule "vim/vim/bundle/jedi-vim"]
+	path = vim/vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
