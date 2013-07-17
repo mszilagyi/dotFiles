@@ -104,8 +104,7 @@ if [ `uname -s` == "Darwin" ]; then
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 else [ `uname -s` == "Linux" ]
-    eval `ssh-agent`
-    ssh-add # Startup ssh-agent
+    # Do stuff for linux here.
 fi
 
 # This loads RVM into a shell session.
