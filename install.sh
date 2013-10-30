@@ -18,7 +18,11 @@ fi
 sudo pip install pep8 pyflakes
 
 # Initialize and pull git submodules
-git submodule update --init --recursive
+rm -rf `pwd`/vim/vim/bundle/*
+
+git clone https://github.com/scrooloose/nerdtree.git vim/vim/bundle/nerdtree
+git clone https://github.com/vim-scripts/pep8.git vim/vim/bundle/pep8
+git clone https://github.com/davidhalter/jedi-vim vim/vim/bundle/jedi-vim --recurse-submodules
 
 rm -rf $HOME/.vim $HOME/.vimrc $HOME/.gvimrc
 rm -rf $HOME/.screenrc
