@@ -14,15 +14,23 @@ else
     exit
 fi
 
-# Install python dependencies
-sudo pip install pep8 pyflakes
+# Install pep8
+sudo pip install --upgrade pep8
+
+# Install Pathogen
+mkdir -p `pwd`/vim/vim/autoload
+curl -so `pwd`/vim/vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # Initialize and pull git submodules
 rm -rf `pwd`/vim/vim/bundle/*
 
+# Install VIM plugins
 git clone https://github.com/scrooloose/nerdtree.git vim/vim/bundle/nerdtree
+git clone https://github.com/scrooloose/nerdcommenter vim/vim/bundle/nerdcommenter
 git clone https://github.com/vim-scripts/pep8.git vim/vim/bundle/pep8
 git clone https://github.com/davidhalter/jedi-vim vim/vim/bundle/jedi-vim --recurse-submodules
+git clone https://github.com/ervandew/supertab vim/vim/bundle/supertab
+git clone https://github.com/scrooloose/syntastic.git vim/vim/bundle/syntastic
 
 rm -rf $HOME/.vim $HOME/.vimrc $HOME/.gvimrc
 rm -rf $HOME/.screenrc
