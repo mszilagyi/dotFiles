@@ -15,7 +15,10 @@ else
 fi
 
 # Install pep8
-sudo pip install --upgrade pep8
+sudo pip install --upgrade pep8 virtualenvwrapper
+
+# Setup virtualenvwrapper directory
+mkdir -p $HOME/.venvs
 
 # Install Pathogen
 mkdir -p `pwd`/vim/vim/autoload

@@ -107,5 +107,9 @@ else [ `uname -s` == "Linux" ]
     # Do stuff for linux here.
 fi
 
+# Setup VirtualEnvWrapper
+source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.venvs
+
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
