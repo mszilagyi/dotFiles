@@ -1,9 +1,8 @@
 " -----------------------------------------------------------------------------
 "  General
 " -----------------------------------------------------------------------------
-
 set nocompatible
-set history=500
+set history=150
 set encoding=utf8
 set fileencoding=utf8
 set ignorecase
@@ -11,25 +10,24 @@ set smartcase
 
 filetype off
 call pathogen#incubate()
-"call pathogen#helptags()
+call pathogen#helptags()
 
 " -----------------------------------------------------------------------------
 "  Backups
 " -----------------------------------------------------------------------------
 
-if has("vms")
-    set nobackup              " do not keep a backup file, use versions instead
-endif
+"if has("vms")
+"    set nobackup              " do not keep a backup file, use versions instead
+"endif
 
 
 " -----------------------------------------------------------------------------
 "  UI
 " -----------------------------------------------------------------------------
-
 set number
 set ruler               " show the cursor position all the time
-set wildmenu
-set wildmode=list:longest
+"set wildmenu
+"set wildmode=list:longest
 set hlsearch
 set scrolloff=3
 set mouse=a
@@ -43,12 +41,12 @@ set hlsearch
 " -----------------------------------------------------------------------------
 "  Visual Cues
 " -----------------------------------------------------------------------------
-
 filetype on                  " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
 syntax on
-colorscheme ir_black
 
+set background=dark
+colorscheme ir_black
 
 " Set global color scheme.
 let python_highlight_all = 1
@@ -72,16 +70,16 @@ set expandtab
 " -----------------------------------------------------------------------------
 "  Custom Text Formatting
 " -----------------------------------------------------------------------------
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
-au BufRead,BufNewFile fabfile set filetype=python
+"au BufRead,BufNewFile Vagrantfile set filetype=ruby
+"au BufRead,BufNewFile fabfile set filetype=python
 
 
 " -----------------------------------------------------------------------------
 "  Whitespace
 " -----------------------------------------------------------------------------
-highlight ExtraWhiteSpace ctermbg=red guibg=red
-:match ExtraWhiteSpace /\s\+$\|\t\+/
-match ExtraWhitespace /\s\+$\|\t\+/
+"highlight ExtraWhiteSpace ctermbg=red guibg=red
+":match ExtraWhiteSpace /\s\+$\|\t\+/
+"match ExtraWhitespace /\s\+$\|\t\+/
 
 
 " -----------------------------------------------------------------------------
@@ -111,23 +109,18 @@ endif
 " -----------------------------------------------------------------------------
 "  Variables
 " -----------------------------------------------------------------------------
-
 let mapleader=","
 
 
 " -----------------------------------------------------------------------------
 "  Mappings
 " -----------------------------------------------------------------------------
-
 " working directory follows current file
 map Q gq
 
-" these require the NERD_comments modules
-map ,c <leader>cl
-map ,d <leader>cu
 
 " execute file being edited with <Shift> + e:
-map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
+"map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
 
 " map window movement commands
 map <c-j> <c-w>j
@@ -137,30 +130,29 @@ map <c-h> <c-w>h
 
 
 " -----------------------------------------------------------------------------
-"  Autocomplete
-" -----------------------------------------------------------------------------
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-" -----------------------------------------------------------------------------
 " Virtualenv
 " -----------------------------------------------------------------------------
 " Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
+"py << EOF
+"import os.path
+"import sys
+"import vim
+"if 'VIRTUAL_ENV' in os.environ:
+"    project_base_dir = os.environ['VIRTUAL_ENV']
+"    sys.path.insert(0, project_base_dir)
+"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"    execfile(activate_this, dict(__file__=activate_this))
+"EOF
 
 
 " -----------------------------------------------------------------------------
 " Jedi-Vim
 " -----------------------------------------------------------------------------
-autocmd FileType python setlocal completeopt-=preview
+if has("autocmd")
+    autocmd FileType python setlocal completeopt-=preview
+end
+let g:jedi#use_splits_not_buffers = "left"
+"let g:jedi#popup_on_dot = 0
 
 
 " -----------------------------------------------------------------------------
@@ -168,32 +160,12 @@ autocmd FileType python setlocal completeopt-=preview
 " -----------------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" -----------------------------------------------------------------------------
-" PEP8 / Pyflakes
-" -----------------------------------------------------------------------------
-let g:pep8_map='<leader>8'
-let g:pyflakes_use_quickfix = 0
-
-
-" -----------------------------------------------------------------------------
-" Pylint
-" -----------------------------------------------------------------------------
-set makeprg=pylint\ --rcfile=~/.pylintrc\ --reports=n\ --include-ids=y\ --output-format=parseable\ %:p
-set errorformat=%f:%l:\ %m
-map <leader>l :w<CR> :make<CR><CR> :cw<CR>
-
 
 " -----------------------------------------------------------------------------
 " Syntastic
 " -----------------------------------------------------------------------------
-let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_checkers=['pep8', 'pylint']
 
-
-" -----------------------------------------------------------------------------
-" Rope
-" -----------------------------------------------------------------------------
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
 
 " -----------------------------------------------------------------------------
 " Ack
@@ -208,14 +180,6 @@ map T :TaskList<CR>
 
 
 " -----------------------------------------------------------------------------
-"  TagList
-" -----------------------------------------------------------------------------
-map S :TlistToggle<CR>
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let Tlist_GainFocus_On_ToggleOpen = 1
-
-
-" -----------------------------------------------------------------------------
 "  NERDTree
 " -----------------------------------------------------------------------------
 nmap <silent> <c-n> :NERDTreeToggle<CR>
@@ -224,6 +188,13 @@ let NERDTreeWinPos          = 'left'
 let NERDTreeSplitVertical   = 1
 let NERDTreeChDirMode       = 2
 let NERDTreeShowBookmarks   = 1
+
+
+" -----------------------------------------------------------------------------
+"  NERDCommenter
+" -----------------------------------------------------------------------------
+map ,c <leader>cl
+map ,d <leader>cu
 
 
 " -----------------------------------------------------------------------------
