@@ -34,6 +34,7 @@ git clone https://github.com/vim-scripts/pep8.git vim/vim/bundle/pep8
 git clone https://github.com/davidhalter/jedi-vim vim/vim/bundle/jedi-vim --recurse-submodules
 git clone https://github.com/ervandew/supertab vim/vim/bundle/supertab
 git clone https://github.com/scrooloose/syntastic.git vim/vim/bundle/syntastic
+git clone https://github.com/tpope/vim-fugitive vim/vim/bundle/vim-fugitive
 
 rm -rf $HOME/.vim $HOME/.vimrc $HOME/.gvimrc
 rm -rf $HOME/.screenrc
