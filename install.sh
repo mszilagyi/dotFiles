@@ -22,7 +22,7 @@ mkdir -p $HOME/.venvs
 
 # Install Pathogen
 mkdir -p `pwd`/vim/vim/autoload
-curl -so `pwd`/vim/vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -so `pwd`/vim/vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # Initialize and pull git submodules
 rm -rf `pwd`/vim/vim/bundle/*
