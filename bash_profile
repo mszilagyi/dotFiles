@@ -108,8 +108,8 @@ else [ `uname -s` == "Linux" ]
 fi
 
 # Setup VirtualEnvWrapper
-source /usr/local/bin/virtualenvwrapper.sh
-export WORKON_HOME=~/.venvs
+#source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/.venvs
 
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

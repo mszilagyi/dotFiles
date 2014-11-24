@@ -4,18 +4,20 @@
 if [ `uname -s` == "Linux" ]; then
     if grep -q "Ubuntu" /etc/issue; then
         ENVSETUPENV="Ubuntu"
+	echo "NOOP for Ubuntu right now"
         # go ahead and install a vim with everything compiled in
-        sudo apt-get -y install vim-gnome exuberant-ctags ack-grep python-setuptools python-dev ipython
+        # sudo apt-get -y install vim-gnome exuberant-ctags ack-grep python-setuptools python-dev ipython
     fi
 elif [ `uname -s` == "Darwin" ]; then
-    brew install ctags ack
+    echo "NOOP for Darwin right now"
+    # brew install ctags ack
 else
     echo Unknown environment.
     exit
 fi
 
 # Install pep8
-sudo pip install --upgrade pep8==1.2 virtualenvwrapper
+#sudo pip install --upgrade pep8==1.2 virtualenvwrapper
 
 # Setup virtualenvwrapper directory
 mkdir -p $HOME/.venvs
